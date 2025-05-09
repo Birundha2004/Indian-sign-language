@@ -1,0 +1,97 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background: url('{{ url_for("static", filename="") }}') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    text-align: center;
+}
+
+
+/* Layout Containers */
+.container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+/* Left: Webcam Section */
+.webcam-section {
+    flex: 1;
+    text-align: center;
+}
+
+.webcam-section h1 {
+    font-size: 2em;
+    color: #FFD700;
+}
+
+.tagline {
+    font-style: italic;
+    font-size: 1.2em;
+    color: lightgray;
+}
+
+#video-feed {
+    border: 3px solid white;
+    width: 600px;
+    height: 450px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+/* Right: Output Section */
+.output-section {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.text-box {
+    margin-top: 20px;
+}
+
+#recognized-text {
+    width: 80%;
+    padding: 10px;
+    font-size: 1.2em;
+}
+
+/* Buttons */
+.controls button {
+    margin: 10px;
+    padding: 10px 15px;
+    font-size: 1em;
+    background: #FFD700;
+    border: none;
+    cursor: pointer;
+}
+
+.controls select {
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 1em;
+}
+
+.sign-preview {
+    width: 150px;
+    margin-top: 20px;
+}
+.gif-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.gif {
+    width: 200px;  /* Adjust size */
+    height: auto;
+}
+.header-box {
+    background: rgba(0, 0, 0, 0.5); /* Black background with 50% transparency */
+    color: rgb(39, 3, 3); /* Text color */
+    text-align: center; /* Center the text */
+    padding: 20px; /* Add space inside the box */
+    border-radius: 10px; /* Rounded corners */
+    display: inline-block; /* Makes the box fit the text */
+    margin: 20px auto; /* Center the box */
+}

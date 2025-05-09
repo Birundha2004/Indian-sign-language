@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>SignNova</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+</head>
+<body class="bg-gray-800 text-white">
+    <div class="flex h-screen">
+        <!-- Left Section -->
+        <div class="w-1/2 bg-gray-450 flex flex-col justify-center items-center p-8 relative">
+            <video autoplay loop muted class="absolute inset-0 w-full h-full object-cover opacity-20">
+                <img alt="Background image" class="absolute inset-0 w-full h-full object-cover opacity-20" src="{{ url_for('static', filename='bg.jpg') }}"/>
+                <source src="{{ url_for('static', filename='yeppy.mp4') }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="relative z-10 text-center">
+                <head> <h1 class="text-4xl font-bold mb-4">SIGNNOVA</h1></head>
+                <h3 class="text-2xl mb-6">Welcome Back</h3>
+                <p class="text-center max-w-md">
+                    A revolutionary Sign Language Recognition System that converts gestures into text and audio bridging the gap between sign language users and the world.
+                </p>
+            </div>
+        </div>
+        <!-- Right Section -->
+        <div class="w-1/2 bg-gray-900 flex flex-col justify-center items-center p-8 relative">
+            <img alt="Background image" class="absolute inset-0 w-full h-full object-cover opacity-20" src="{{ url_for('static', filename='bg.png') }}"/>
+            <div class="relative z-10 bg-black p-8 rounded-lg shadow-lg w-80">
+                <h2 class="text-2xl font-bold mb-6">Login</h2>
+                <form id="loginForm">
+                    <div class="mb-4">
+                        <input class="w-full p-2 rounded bg-gray-800 text-white border border-gray-600" placeholder="Username" type="text" id="username" required/>
+                    </div>
+                    <div class="mb-4">
+                        <input class="w-full p-2 rounded bg-gray-800 text-white border border-gray-600" placeholder="Password" type="password" id="password" required/>
+                    </div>
+                    <button class="w-full bg-green-600 text-white p-2 rounded mb-4" type="button" onclick="submitLogin()">Login</button>
+                    <p class="text-center">
+                        <a class="text-green-600" href="{{ url_for('signup') }}">Don't have an account? Sign up</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function submitLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = '/main';  // Redirect to main page on successful login
+                } else {
+                    alert(data.message || 'Login failed!');
+                }
+            })
+            .catch(error => alert('Error:', error));
+        }
+    </script>
+</body>
+</html>

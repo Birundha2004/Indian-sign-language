@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Sign Up - SignNova</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-800 text-white">
+    <div class="flex h-screen justify-center items-center">
+        <div class="bg-gray-900 p-8 rounded-lg shadow-lg w-80">
+            <h2 class="text-2xl font-bold mb-6">Sign Up</h2>
+            <form method="POST" action="/signup">
+                <div class="mb-4">
+                    <input class="w-full p-2 rounded bg-gray-800 text-white border border-gray-600" placeholder="Username" type="text" name="username" required/>
+                </div>
+                <div class="mb-4">
+                    <input class="w-full p-2 rounded bg-gray-800 text-white border border-gray-600" placeholder="Password" type="password" name="password" required/>
+                </div>
+                <button class="w-full bg-green-600 text-white p-2 rounded mb-4" type="submit">Sign Up</button>
+                <p class="text-center">
+                    <a class="text-green-600" href="{{ url_for('index') }}">Already have an account? Login</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
